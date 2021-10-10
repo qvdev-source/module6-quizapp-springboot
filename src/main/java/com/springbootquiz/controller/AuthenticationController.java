@@ -46,11 +46,15 @@ public class AuthenticationController {
 
     @PostMapping("change-password")
     public ResponseEntity<?> changePass(@RequestBody User user){
-        User user1 = userRepository.findByUsername(user.getUsername()).get();
-        user1.setPassword(passwordEncoder.encode(user.getNewPassword()));
-        user1.setUpdateTime(LocalDateTime.now());
-        userRepository.save(user1);
-        return null;
+        if (user.getOldPassword().equals(user.getPassword())){
+            User user1 = userRepository.findByUsername(user.getUsername()).get();
+            user1.setPassword(passwordEncoder.encode(user.getNewPassword()));
+            user1.setUpdateTime(LocalDateTime.now());
+            userRepository.save(user1);
+            return null;
+        }
+        return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+
     }
 
 }

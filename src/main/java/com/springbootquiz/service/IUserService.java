@@ -8,6 +8,8 @@ import java.util.Optional;
 public interface IUserService {
     User saveUser(User user);
 
+    User changePassword(User user, String newPassword);
+
     Optional<User> findByUsername(String username);
 
     void makeAdmin(String username);

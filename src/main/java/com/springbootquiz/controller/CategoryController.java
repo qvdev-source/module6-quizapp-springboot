@@ -14,11 +14,6 @@ public class CategoryController {
     @Autowired
     private CategoryService categoryService;
 
-    @ExceptionHandler(Exception.class)
-    public ModelAndView handleError(Exception e) {
-        ModelAndView modelAndView = new ModelAndView("error");
-        return modelAndView;
-    }
 
     @PostMapping
     public ResponseEntity<Category> addCategory(@RequestBody Category category) {

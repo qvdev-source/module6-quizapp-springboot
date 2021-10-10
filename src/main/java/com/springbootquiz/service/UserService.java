@@ -29,6 +29,14 @@ public class UserService implements IUserService {
         return userRepository.save(user);
     }
 
+
+    @Override
+    public User changePassword(User user, String newPassword){
+        user.setPassword(passwordEncoder.encode(newPassword));
+        user.setUpdateTime(LocalDateTime.now());
+        return userRepository.save(user);
+    }
+
     @Override
     public Optional<User> findByUsername(String username) {
         return userRepository.findByUsername(username);

@@ -20,6 +20,13 @@ public class User {
     @Column(name = "password", nullable = false, length = 100)
     private String password;
 
+    private String oldPassword;
+
+    private String newPassword;
+
+    private LocalDateTime updateTime;
+
+
     @Column(name = "name", nullable = false, length = 100)
     private String name;
 

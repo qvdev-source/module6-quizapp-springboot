@@ -3,6 +3,8 @@ package com.springbootquiz.controller;
 import com.springbootquiz.model.Quiz;
 import com.springbootquiz.service.QuizService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.EmptyResultDataAccessException;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -35,6 +37,17 @@ public class QuizController {
     @DeleteMapping("/{qid}")
     public void delete(@PathVariable("qid") Long qid) {
         this.quizService.deleteQuiz(qid);
+    }
+
+
+
+    @GetMapping("/find/{title}")
+    public ResponseEntity findEmployeeById(@PathVariable("title") String title) {
+        try {
+            return new ResponseEntity<>(quizService.findAllByTitle(title), HttpStatus.OK);
+        } catch (EmptyResultDataAccessException e) {
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        }
     }
 
 }

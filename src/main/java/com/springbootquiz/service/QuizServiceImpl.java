@@ -5,6 +5,7 @@ import com.springbootquiz.repository.QuizRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -37,5 +38,10 @@ public class QuizServiceImpl implements QuizService {
     @Override
     public void deleteQuiz(Long quizId) {
         this.quizRepository.deleteById(quizId);
+    }
+
+    @Override
+    public ArrayList<Quiz> findAllByTitle(String name) {
+        return quizRepository.findAllByTitle(name);
     }
 }

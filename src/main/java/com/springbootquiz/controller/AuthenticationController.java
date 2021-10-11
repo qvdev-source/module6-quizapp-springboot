@@ -1,18 +1,23 @@
 package com.springbootquiz.controller;
 
 import com.springbootquiz.model.User;
+import com.springbootquiz.model.UserChangePassword;
 import com.springbootquiz.repository.IUserRepository;
 import com.springbootquiz.security.UserPrincipal;
 import com.springbootquiz.service.IAuthenticationService;
 import com.springbootquiz.service.IUserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.security.SecurityProperties;
+import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDateTime;
+import java.util.Locale;
 import java.util.Optional;
 
 
@@ -27,6 +32,7 @@ public class AuthenticationController {
 
     @Autowired
     private IUserRepository userRepository;
+
 
     @Autowired
     private IUserService userService;
@@ -45,16 +51,14 @@ public class AuthenticationController {
     }
 
     @PostMapping("change-password")
-    public ResponseEntity<?> changePass(@RequestBody User user){
-        if (user.getOldPassword().equals(user.getPassword())){
-            User user1 = userRepository.findByUsername(user.getUsername()).get();
+    public ResponseEntity<?> changePass(@RequestBody UserChangePassword user){
+        User user1 = userService.findByUsername(SecurityContextHolder.getContext().getAuthentication().getName()).get();
+        if (passwordEncoder.matches(user.getOldPassword(),user1.getPassword())){
             user1.setPassword(passwordEncoder.encode(user.getNewPassword()));
             user1.setUpdateTime(LocalDateTime.now());
             userRepository.save(user1);
             return null;
         }
         return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-
     }
-
 }

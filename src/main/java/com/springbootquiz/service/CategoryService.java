@@ -2,6 +2,7 @@ package com.springbootquiz.service;
 
 import com.springbootquiz.model.Category;
 
+import java.util.ArrayList;
 import java.util.Set;
 
 public interface CategoryService {
@@ -15,5 +16,7 @@ public interface CategoryService {
     public Category getCategory(Long categoryId);
 
     public void deleteCategory(Long categoryId);
+
+    public ArrayList<Category> findAllByTitle(String name);
 
 }

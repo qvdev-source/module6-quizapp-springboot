@@ -5,6 +5,7 @@ import com.springbootquiz.repository.CategoryRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.LinkedHashSet;
 import java.util.Set;
 
@@ -40,5 +41,10 @@ public class CategoryServiceImpl implements CategoryService {
         Category category = new Category();
         category.setCid(categoryId);
         this.categoryRepository.delete(category);
+    }
+
+    @Override
+    public ArrayList<Category> findAllByTitle(String name) {
+        return categoryRepository.findAllByTitle(name);
     }
 }

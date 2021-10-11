@@ -3,6 +3,7 @@ package com.springbootquiz.controller;
 import com.springbootquiz.model.Category;
 import com.springbootquiz.service.CategoryService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -53,5 +54,17 @@ public class CategoryController {
     public void deleteCategory(@PathVariable("categoryId") Long categoryId) {
         this.categoryService.deleteCategory(categoryId);
     }
+
+
+
+    @GetMapping("/find/{title}")
+    public ResponseEntity findEmployeeById(@PathVariable("title") String title) {
+        try {
+            return new ResponseEntity<>(categoryService.findAllByTitle(title), HttpStatus.OK);
+        } catch (EmptyResultDataAccessException e) {
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        }
+    }
+
 
 }

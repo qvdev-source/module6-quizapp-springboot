@@ -57,6 +57,14 @@ public class Category {
     public void setDescription(String description) {
         this.description = description;
     }
+
+    public Set<Quiz> getQuizzes() {
+        return quizzes;
+    }
+
+    public void setQuizzes(Set<Quiz> quizzes) {
+        this.quizzes = quizzes;
+    }
 }
 
 

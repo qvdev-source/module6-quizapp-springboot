@@ -59,7 +59,7 @@ public class AuthenticationController {
             user1.setPassword(passwordEncoder.encode(user.getNewPassword()));
             user1.setUpdateTime(LocalDateTime.now());
             userRepository.save(user1);
-            return new ResponseEntity<>("PASSWORD CHANGED , Please sign-in",HttpStatus.OK);
+            return new ResponseEntity<>(user1,HttpStatus.OK);
         }
         return new ResponseEntity<>(HttpStatus.NOT_FOUND);
     }

@@ -52,6 +52,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         http.authorizeRequests()
                 .antMatchers("/api/authentication/**").permitAll()
                 .antMatchers(HttpMethod.GET, "/api/category/**").permitAll()
+                .antMatchers(HttpMethod.GET, "/gkz-stomp-endpoint/**").permitAll()
+                .antMatchers(HttpMethod.GET, "/chat/**").permitAll()
                 .antMatchers(HttpMethod.PUT, "/api/category/**").permitAll()
                 .antMatchers(HttpMethod.GET, "/api/quiz/**").permitAll()
                 .antMatchers(HttpMethod.GET, "/api/question/**").permitAll()

@@ -32,4 +32,27 @@ public class User {
 
     @Transient
     private String token;
+
+
+
+//    chat
+
+    @Column(name = "message", nullable = false, length = 100)
+    private String message;
+
+    public String getMessage() {
+        return message;
+    }
+
+    public void setMessage(String message) {
+        this.message = message;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
 }

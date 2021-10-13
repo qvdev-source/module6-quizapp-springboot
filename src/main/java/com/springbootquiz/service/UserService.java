@@ -53,4 +53,9 @@ public class UserService implements IUserService {
     public void makeSuperAdmin(String username) {
         userRepository.updateUserRole(username, Role.SUPER_ADMIN);
     }
+
+    @Override
+    public User getUser(Long userId) {
+        return userRepository.findById(userId).get();
+    }
 }

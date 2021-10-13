@@ -10,9 +10,11 @@ import org.springframework.stereotype.Controller;
 
 @Controller
 public class WebController {
+    @Autowired
+    SimpMessagingTemplate simpMessagingTemplate;
+
     @MessageMapping("/chat")
-    @SendTo("/topic/chat")
-    public Chat greeting(User user) throws Exception {
-        return new Chat(user.getName() + ":" +user.getMessage());
+    public void greeting(User user) throws Exception {
+        simpMessagingTemplate.convertAndSend("/topic/chat", new Chat(user.getName() +" : " + user.getMessage()));
     }
 }

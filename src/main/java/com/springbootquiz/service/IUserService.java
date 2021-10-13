@@ -1,5 +1,6 @@
 package com.springbootquiz.service;
 
+import com.springbootquiz.model.Category;
 import com.springbootquiz.model.User;
 
 import java.util.Optional;
@@ -15,4 +16,6 @@ public interface IUserService {
     void makeAdmin(String username);
 
     void makeSuperAdmin(String username);
+
+    public User getUser(Long userId);
 }

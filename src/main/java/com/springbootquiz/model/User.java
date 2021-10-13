@@ -44,7 +44,7 @@ public class User {
 
 //    chat
 
-    @Column(name = "message", nullable = false, length = 100)
+    @Column(name = "message", length = 255)
     private String message;
 
     public String getMessage() {

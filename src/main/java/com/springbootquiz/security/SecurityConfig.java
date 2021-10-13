@@ -54,6 +54,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers(HttpMethod.GET, "/api/category/**").permitAll()
                 .antMatchers(HttpMethod.GET, "/api/quiz/**").permitAll()
                 .antMatchers(HttpMethod.GET, "/api/question/**").permitAll()
+                .antMatchers( "/api/user/**").hasAnyRole(Role.ADMIN.name(),Role.SUPER_ADMIN.name())
                 .antMatchers("/api/category/**").hasAnyRole(Role.ADMIN.name(),Role.SUPER_ADMIN.name())
                 .antMatchers("/api/quiz/**").hasRole(Role.ADMIN.name())
                 .antMatchers("/api/question/**").hasRole(Role.ADMIN.name())//crud quiz admin

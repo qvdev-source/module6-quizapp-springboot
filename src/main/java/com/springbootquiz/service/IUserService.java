@@ -2,6 +2,7 @@ package com.springbootquiz.service;
 
 import com.springbootquiz.model.User;
 
+import java.util.List;
 import java.util.Optional;
 
 
@@ -11,6 +12,8 @@ public interface IUserService {
     User changePassword(User user, String newPassword);
 
     Optional<User> findByUsername(String username);
+
+    List<User> showAllUser();
 
     void makeAdmin(String username);
 

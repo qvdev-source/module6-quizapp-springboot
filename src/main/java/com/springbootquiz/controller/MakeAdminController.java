@@ -19,7 +19,6 @@ public class MakeAdminController {
     @PutMapping("makeadmin/{username}") //api/makeadmin/makeadmin/{username} ->api make admin from superadmin
     public ResponseEntity<?> makeAdmin(@PathVariable String username) {
         userService.makeAdmin(username);
-
         return new ResponseEntity<>(HttpStatus.OK);
     }
 }

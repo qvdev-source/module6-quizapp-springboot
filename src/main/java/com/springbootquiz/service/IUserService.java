@@ -18,4 +18,6 @@ public interface IUserService {
     void makeAdmin(String username);
 
     void makeSuperAdmin(String username);
+
+    void makeUser(String username);
 }

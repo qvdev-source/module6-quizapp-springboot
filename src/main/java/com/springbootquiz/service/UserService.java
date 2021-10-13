@@ -36,6 +36,7 @@ public class UserService implements IUserService {
     }
 
 
+
     @Override
     public User changePassword(User user, String newPassword) {
         user.setPassword(passwordEncoder.encode(newPassword));
@@ -82,6 +83,11 @@ public class UserService implements IUserService {
             emailService.sendNewPasswordEmail(username, password, email);
         }
 
+    }
+
+    @Override
+    public void delete(long id) {
+        userRepository.deleteById(id);
     }
 
     private String generatePassword() {

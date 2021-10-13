@@ -34,7 +34,6 @@ public class AuthenticationController {
     @Autowired
     private IUserRepository userRepository;
 
-
     @Autowired
     private IUserService userService;
 

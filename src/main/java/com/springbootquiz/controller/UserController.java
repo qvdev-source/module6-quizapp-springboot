@@ -22,15 +22,20 @@ public class UserController {
     private UserService userService;
 
     @GetMapping("/show-all")
-    public ResponseEntity<List<User>> getAllUser()
-    {
+    public ResponseEntity<List<User>> getAllUser() {
         return new ResponseEntity<>(userService.showAllUser(), HttpStatus.OK);
     }
 
-    @PostMapping ("/resetpassword")
+    @PostMapping("/resetpassword")
     public ResponseEntity<?> resetPassword(@RequestBody Email email) throws MessagingException {
         userService.resetPassword(email.getEmail(), email.getUsername());
         return new ResponseEntity<>(email, OK);
+    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<?> deleteUser(@PathVariable long id) {
+         userService.delete(id);
+         return new ResponseEntity(HttpStatus.OK);
     }
 
 }

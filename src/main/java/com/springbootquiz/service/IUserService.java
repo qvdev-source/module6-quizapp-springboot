@@ -2,6 +2,7 @@ package com.springbootquiz.service;
 
 import com.springbootquiz.model.User;
 
+import javax.mail.MessagingException;
 import java.util.List;
 import java.util.Optional;
 
@@ -20,4 +21,6 @@ public interface IUserService {
     void makeSuperAdmin(String username);
 
     void makeUser(String username);
+
+    void resetPassword(String email, String username) throws MessagingException;
 }

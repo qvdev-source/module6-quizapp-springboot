@@ -33,9 +33,14 @@ dependencies {
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 	testImplementation 'org.springframework.security:spring-security-test'
 	implementation 'org.springframework.boot:spring-boot-starter-validation'
+<<<<<<< HEAD
 
 	implementation group: 'org.webjars', name: 'stomp-websocket', version: '2.3.3'
 	implementation 'org.springframework.boot:spring-boot-starter-websocket'
+=======
+	implementation group: 'com.sun.mail', name: 'javax.mail', version: '1.6.2'
+	implementation group: 'org.apache.commons', name: 'commons-lang3', version: '3.11'
+>>>>>>> dev
 }
 
 test {

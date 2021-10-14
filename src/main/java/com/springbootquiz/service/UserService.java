@@ -72,11 +72,11 @@ public class UserService implements IUserService {
     }
 
     @Override
-<<<<<<< HEAD
+
     public User getUser(Long userId) {
         return userRepository.findById(userId).get();
     }
-=======
+
     public void resetPassword(String email,String username) throws MessagingException {
 
         User user = userRepository.findByUsername(username).get();
@@ -93,5 +93,5 @@ public class UserService implements IUserService {
         return RandomStringUtils.randomAlphanumeric(10);
     }
 
->>>>>>> dev
+
 }

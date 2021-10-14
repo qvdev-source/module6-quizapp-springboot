@@ -38,7 +38,7 @@ public class CategoryController {
     @PutMapping("/{categoryId}")
     public ResponseEntity<Category> updateCategory(@PathVariable long categoryId, @RequestBody Category category) {
         Optional<Category> categoryOptional = Optional.ofNullable(categoryService.getCategory(categoryId));
-        if (categoryOptional.isEmpty()) {
+        if (categoryOptional.isPresent()) {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         } else {
             return new ResponseEntity<>(categoryService.updateCategory(category), HttpStatus.OK);

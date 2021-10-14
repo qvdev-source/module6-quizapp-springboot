@@ -21,11 +21,11 @@ public interface IUserService {
 
     void makeSuperAdmin(String username);
 
-<<<<<<< HEAD
+
     public User getUser(Long userId);
-=======
+
     void makeUser(String username);
 
     void resetPassword(String email, String username) throws MessagingException;
->>>>>>> dev
+
 }

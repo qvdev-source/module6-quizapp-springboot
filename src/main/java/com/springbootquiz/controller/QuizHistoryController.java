@@ -21,8 +21,8 @@ public class QuizHistoryController {
         return new ResponseEntity<>(this.quizHistory.saveQuizHistory(quizHistory), HttpStatus.OK);
     }
     @GetMapping("/{userId}")
-    public ResponseEntity<QuizHistory>findById(@PathVariable String userId) throws Exception{
-        return new ResponseEntity<>(this.quizHistory.findByUserName(userId).get(),HttpStatus.OK);
+    public ResponseEntity<ArrayList<QuizHistory>> findById(@PathVariable String userId) throws Exception{
+        return new ResponseEntity<>(this.quizHistory.findByUserId(userId),HttpStatus.OK);
     }
     @GetMapping
     public ResponseEntity<ArrayList<QuizHistory>> findAll() throws Exception{

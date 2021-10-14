@@ -20,8 +20,8 @@ public class QuizHistoryServiceImpl implements QuizHistoryService {
     private QuizRepository quizRepository;
 
     @Override
-    public Optional<QuizHistory> findByUserName(String userId) {
-        return quizHistoryRepository.findByUserName(userId);
+    public ArrayList<QuizHistory> findByUserId(String userId) {
+        return quizHistoryRepository.findAllByUserId(userId);
     }
 
     @Override

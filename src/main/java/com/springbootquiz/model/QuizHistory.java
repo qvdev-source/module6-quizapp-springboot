@@ -21,6 +21,9 @@ public class QuizHistory {
 
     private String quizId;
 
+    private String quizTitle;
+     private String username;
+
     @Column(name = "time_create")
     private LocalDateTime timeCreate;
 

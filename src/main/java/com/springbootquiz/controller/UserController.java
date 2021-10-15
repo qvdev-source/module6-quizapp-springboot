@@ -1,7 +1,9 @@
 package com.springbootquiz.controller;
 
 import com.springbootquiz.model.Email;
+import com.springbootquiz.model.Quiz;
 import com.springbootquiz.model.User;
+import com.springbootquiz.repository.QuizRepository;
 import com.springbootquiz.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -17,6 +19,8 @@ import static org.springframework.http.HttpStatus.OK;
 @RestController
 @RequestMapping("/api/user")
 public class UserController {
+    @Autowired
+    private QuizRepository quizRepository;
 
     @Autowired
     private UserService userService;
@@ -31,6 +35,18 @@ public class UserController {
     public ResponseEntity<?> resetPassword(@RequestBody Email email) throws MessagingException {
         userService.resetPassword(email.getEmail(), email.getUsername());
         return new ResponseEntity<>(email, OK);
+    }
+
+    @GetMapping("/getquiz")
+    public ResponseEntity<?> findQuizActive(@RequestBody Quiz quiz)
+    {
+        return new ResponseEntity<>(quizRepository.findQuizzesByActiveTrue(), OK);
+    }
+
+    @GetMapping("/getquiznotactive")
+    public ResponseEntity<?> findQuizNotActive(@RequestBody Quiz quiz)
+    {
+        return new ResponseEntity<>(quizRepository.findQuizzesByActiveFalse(), OK);
     }
 
 }

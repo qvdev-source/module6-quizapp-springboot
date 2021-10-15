@@ -1,5 +1,4 @@
 package com.springbootquiz.controller;
-
 import com.springbootquiz.model.Question;
 import com.springbootquiz.model.Quiz;
 import com.springbootquiz.service.QuestionService;
@@ -16,6 +15,7 @@ import java.util.Set;
 @RestController
 @RequestMapping("/api/question")
 public class QuestionController {
+
     @Autowired
     private QuestionService service;
 
@@ -57,7 +57,6 @@ public class QuestionController {
         return ResponseEntity.ok(questionsOfQuiz);
     }
 
-
     @GetMapping("/{quesId}")
     public Question get(@PathVariable("quesId") Long quesId) {
         return this.service.getQuestion(quesId);
@@ -67,6 +66,4 @@ public class QuestionController {
     public void delete(@PathVariable("quesId") Long quesId) {
         this.service.deleteQuestion(quesId);
     }
-
-
 }

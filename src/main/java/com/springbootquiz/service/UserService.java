@@ -31,10 +31,8 @@ public class UserService implements IUserService {
         user.setPassword(passwordEncoder.encode(user.getPassword()));
         user.setRole(Role.USER);
         user.setCreateTime(LocalDateTime.now());
-
         return userRepository.save(user);
     }
-
 
     @Override
     public User changePassword(User user, String newPassword) {
@@ -69,6 +67,11 @@ public class UserService implements IUserService {
     @Transactional
     public void makeSuperAdmin(String username) {
         userRepository.updateUserRole(username, Role.SUPER_ADMIN);
+    }
+
+    @Override
+    public User updateUser(User user) {
+        return userRepository.save(user);
     }
 
     @Override

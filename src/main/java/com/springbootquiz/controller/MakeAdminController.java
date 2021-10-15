@@ -1,5 +1,4 @@
 package com.springbootquiz.controller;
-
 import com.springbootquiz.service.IUserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -27,5 +26,4 @@ public class MakeAdminController {
         userService.makeUser(username);
         return new ResponseEntity<>(HttpStatus.OK);
     }
-
 }

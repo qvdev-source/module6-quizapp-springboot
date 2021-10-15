@@ -1,10 +1,8 @@
 package com.springbootquiz.model;
-
 import lombok.Data;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
-
 
 @Data
 @Entity
@@ -22,7 +20,6 @@ public class User {
 
     private LocalDateTime updateTime;
 
-
     @Column(name = "name", nullable = false, length = 100)
     private String name;
 
@@ -35,10 +32,6 @@ public class User {
 
     @Transient
     private String token;
-
-
-
-//    chat
 
     @Column(name = "message", length = 255)
     private String message;

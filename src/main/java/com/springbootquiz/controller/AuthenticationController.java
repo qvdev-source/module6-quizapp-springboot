@@ -1,5 +1,4 @@
 package com.springbootquiz.controller;
-
 import com.springbootquiz.model.User;
 import com.springbootquiz.model.UserChangePassword;
 import com.springbootquiz.repository.IUserRepository;
@@ -12,10 +11,8 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.*;
-
 import java.time.LocalDateTime;
 import java.util.Optional;
-
 
 @RestController
 @RequestMapping("api/authentication")//pre-path
@@ -28,7 +25,6 @@ public class AuthenticationController {
 
     @Autowired
     private IUserRepository userRepository;
-
 
     @Autowired
     private IUserService userService;
@@ -59,16 +55,13 @@ public class AuthenticationController {
         return new ResponseEntity<>(HttpStatus.NOT_FOUND);
     }
 
-
-
-
-    @PutMapping("/{id}")
-    public ResponseEntity<?> edit(@PathVariable Long id,@RequestBody User user){
+    @PutMapping("/edit/{id}")
+    public ResponseEntity<?> edit(@PathVariable("id") Long id,@RequestBody User user){
         Optional<User> userOptional = Optional.ofNullable(userService.getUser(id));
         if (userOptional.isEmpty()) {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         } else {
-            return new ResponseEntity<>(userService.saveUser(user), HttpStatus.OK);
+            return new ResponseEntity<>(userService.updateUser(user), HttpStatus.OK);
         }
     }
     @GetMapping("/find/{name}")
@@ -79,6 +72,4 @@ public class AuthenticationController {
     public User getUserbyId(@PathVariable("userId") Long userId) {
         return this.userService.getUser(userId);
     }
-
-
 }

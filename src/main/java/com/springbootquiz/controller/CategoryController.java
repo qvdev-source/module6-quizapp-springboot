@@ -1,5 +1,4 @@
 package com.springbootquiz.controller;
-
 import com.springbootquiz.model.Category;
 import com.springbootquiz.service.CategoryService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -7,8 +6,6 @@ import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.servlet.ModelAndView;
-
 import java.util.Optional;
 
 @RestController
@@ -17,7 +14,6 @@ public class CategoryController {
 
     @Autowired
     private CategoryService categoryService;
-
 
     @PostMapping
     public ResponseEntity<Category> addCategory(@RequestBody Category category) {
@@ -50,8 +46,6 @@ public class CategoryController {
         this.categoryService.deleteCategory(categoryId);
     }
 
-
-
     @GetMapping("/find/{title}")
     public ResponseEntity findEmployeeById(@PathVariable("title") String title) {
         try {
@@ -60,6 +54,4 @@ public class CategoryController {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
     }
-
-
 }

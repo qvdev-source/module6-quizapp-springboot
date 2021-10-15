@@ -29,5 +29,6 @@ public interface IUserService {
 
     void resetPassword(String email, String username) throws MessagingException;
 
+    void delete(long id);
 
 }

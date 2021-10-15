@@ -92,6 +92,11 @@ public class UserService implements IUserService {
 
     }
 
+    @Override
+    public void delete(long id) {
+        userRepository.deleteById(id);
+    }
+
     private String generatePassword() {
         return RandomStringUtils.randomAlphanumeric(10);
     }

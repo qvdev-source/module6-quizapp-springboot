@@ -2,12 +2,12 @@ package com.springbootquiz.controller;
 
 import com.springbootquiz.model.QuizHistory;
 import com.springbootquiz.service.QuizHistoryService;
-import com.springbootquiz.service.QuizService;
-import com.springbootquiz.service.QuizServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.ArrayList;
 
 @RestController
 @RequestMapping("/api/save-history")
@@ -19,6 +19,14 @@ public class QuizHistoryController {
     @PostMapping
     public ResponseEntity<QuizHistory> addQuizHistory(@RequestBody QuizHistory quizHistory) throws Exception {
         return new ResponseEntity<>(this.quizHistory.saveQuizHistory(quizHistory), HttpStatus.OK);
+    }
+    @GetMapping("/{userId}")
+    public ResponseEntity<ArrayList<QuizHistory>> findById(@PathVariable String userId) throws Exception{
+        return new ResponseEntity<>(this.quizHistory.findByUserId(userId),HttpStatus.OK);
+    }
+    @GetMapping
+    public ResponseEntity<ArrayList<QuizHistory>> findAll() throws Exception{
+        return new ResponseEntity<>(this.quizHistory.finAll(),HttpStatus.OK);
     }
 
 }

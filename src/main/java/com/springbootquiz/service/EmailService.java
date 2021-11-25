@@ -14,12 +14,12 @@ import java.util.Properties;
 @Service
 public class EmailService {
     public static final String SIMPLE_MAIL_TRANSFER_PROTOCOL = "smtps";
-//<<<<<<< HEAD
+//
 //    public static final String USERNAME = "";
-//    public static final String PASSWORD = "";
-//=======
-    public static final String USERNAME = "tam1072002tq@gmail.com";
-    public static final String PASSWORD = "@tam2002";
+//    public static final String PASSWORD = "";e thay mail cua e di
+
+    public static final String USERNAME = "thaophamhetxat@gmail.com";
+    public static final String PASSWORD = "hoanglanhl";
 
     public static final String FROM_EMAIL = "support@quocvietdev.com";
     public static final String CC_EMAIL = "";
